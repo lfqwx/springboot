@@ -9,7 +9,7 @@
     <select id="queryAreaById" resultType="com.imooc.demo.entity.Area">
         select * from tb_area where area_id=#{areaId}
     </select>
-    <insert id="insertArea" useGeneratedKeys="true" keyProperty="areaId"
+    <insert id="addArea" useGeneratedKeys="true" keyProperty="areaId"
             keyColumn="area_id" parameterType="com.imooc.demo.entity.Area">
         insert into tb_area(area_id,area_name,priority,create_time,last_edit_time)
         values(#{areaId},#{areaName},#{priority},#{createTime},#{lastEditTime})
@@ -18,7 +18,7 @@
         update tb_area
         <set>
             <if test="areaName!=null">area_name=#{areaName},</if>
-            <if test="priority!=null">area_name=#{priority},</if>
+            <if test="priority!=null">priority=#{priority},</if>
             <if test="lastEditTime!=null">last_edit_time=#{lastEditTime}</if>
         </set>
         where area_id=#{areaId}
